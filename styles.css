@@ -1,5 +1,5 @@
 html {
-    background-color: darkgrey
+    background-color: #2330b8
 }
 
 body, html {
@@ -30,7 +30,7 @@ body, html {
     padding: 1rem;
     text-align: center;
     color: white;
-    background: rgba(0, 0, 0, 0.7);
+    background: #4958c6;
     text-shadow: 0 0 .5rem black;
 }
 
@@ -44,6 +44,7 @@ body, html {
 label {
     font-style: italic;
     font-size: 1.2rem;
+    color: white;
 }
 
 .listItem {

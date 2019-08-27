@@ -3,8 +3,8 @@ const displaySongs = function () {
     const nowplayingTitle = document.getElementById('nowplayingTitle');
     const nowplayingInfo = document.getElementById('nowplayingInfo');
     const lastPlayedDiv = document.getElementById('lastplayed');
-    const nowPlayingEndpoint = 'http://35.211.223.26/nowplaying';
-    const lastPlayedEndpoint = 'http://35.211.223.26/lastplayed';
+    const nowPlayingEndpoint = 'https://35.211.223.26/nowplaying';
+    const lastPlayedEndpoint = 'https://35.211.223.26/lastplayed';
 
     fetch(nowPlayingEndpoint)
         .then(response => response.json())

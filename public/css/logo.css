@@ -1,0 +1,9 @@
+.logo-container {
+  height: 5rem;
+  padding-left: 3.5rem;
+}
+
+.logo-container svg {
+  height: 6rem;
+  width: 12rem;
+}

@@ -1,0 +1,41 @@
+:root {
+  --theme-background-color: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(57, 57, 67, 1) 75%
+  );
+  --theme-text-color: #0085ff;
+  --theme-single-hover-background-color: #111112;
+  --theme-single-background-color: #18181d;
+  --theme-single-shadow: "0px 2px 12px 2px rgba(0, 0, 0, 0.4);";
+}
+
+html {
+  background: var(--theme-background-color);
+  height: 100%;
+  font-size: 62.5%;
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "ProximaNova-Regular", sans-serif;
+  height: 100%;
+}
+
+body {
+  overflow: hidden;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: stretch;
+  width: 70%;
+  margin: 0 auto;
+  padding: 2rem;
+  height: 100%;
+}

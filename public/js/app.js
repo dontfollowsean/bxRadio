@@ -1,7 +1,4 @@
-const nowplayingImg = document.querySelector(".now-playing-img"),
-  nowplayingTitle = document.querySelector(".now-playing-title"),
-  nowplayingInfo = document.querySelector(".now-playing-info"),
-  nowPlayingArtist = document.querySelector(".now-playing-artist"),
+const nowplaying = document.querySelector(".now-playing"),
   recentlyPlayedDiv = document.querySelector(".recently-played-container"),
   toggle = document.querySelector("#toggle"),
   nowPlayingEndpoint = "http://35.211.223.26/nowplaying",
@@ -10,14 +7,22 @@ const nowplayingImg = document.querySelector(".now-playing-img"),
 const renderNowPlaying = song => {
   const image = song.images.find(i => i.width === 640);
 
-  nowplayingImg.src = image[0].url;
-  nowplayingTitle.innerText = `${song.title}`;
-  nowPlayingArtist.innerText = ` by ${song.artist}`;
+  if (image === null) {
+    image.url = "./public/images/generic-image.png";
+  }
 
-  nowplayingInfo.addEventListener(
-    "click",
-    () => (window.location.href = song.url)
-  );
+  nowplaying.innerHTML = `
+    <div class="now-playing-container" onclick="window.open('${song.url}', '_blank')">
+      <label>Now Playing</label>
+      <div class="now-playing-info">
+        <div class="now-playing-title">${song.title}</div>
+        <div class="now-playing-artist">${song.artist}</div>
+      </div>
+    </div>
+    <div class="now-playing-img">
+      <img src=${image.url} alt=${song.title} />
+    </div>
+  `;
 };
 
 const renderRecentlyPlayed = songs => {
@@ -49,20 +54,35 @@ const renderRecentlyPlayed = songs => {
   TODO - 
     Proper error handling
 */
-const handleError = err => {
-  console.log(err);
+const displayNotPlaying = () => {
+  nowplaying.innerHTML = `
+    <div class="now-playing-container">
+      <div class="now-playing-info">
+        <div class="now-playing-title">No music is playing</div>
+      </div>
+    </div>
+    <div class="now-playing-img">
+      <img src="./public/images/generic-image.png" alt="Generic Cover Image" />
+    </div>
+  `;
 };
 
-const displaySongs = e => {
+const displaySongs = () => {
   fetch(nowPlayingEndpoint)
-    .then(response => response.json())
+    .then(response => {
+      if (response.status === 204){
+        displayNotPlaying()
+        return
+      }
+     return response.json()
+    })
     .then(renderNowPlaying)
-    .catch(handleError);
+    .catch(err => console.log(err));
 
   fetch(recentlyPlayedEndpoint)
     .then(response => response.json())
     .then(renderRecentlyPlayed)
-    .catch(handleError);
+    .catch(err => console.log(err));
 };
 
 const styles = {
@@ -71,7 +91,7 @@ const styles = {
       "linear-gradient(0deg, #0047c8 0%, #0080d4 75%)",
     "--theme-text-color": "#f8e71c",
     "--theme-single-hover-background-color": "#0266c1",
-    "--theme-single-background-color": "#0085ff",
+    "--theme-single-background-color": "#0047C8",
     "--theme-single-shadow": "0px 2px 8px 2px rgba(0, 0, 0, 0.1)"
   },
   dark: {
@@ -96,5 +116,5 @@ const toggleTheme = e => {
   }
 };
 
-window.addEventListener("load", displaySongs);
+displaySongs();
 toggle.addEventListener("change", toggleTheme);

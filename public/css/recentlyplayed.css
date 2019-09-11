@@ -80,8 +80,12 @@
   padding-left: 2rem;
 }
 
-.single-song-title,
-.single-song-artist {
+.single-song-title {
   font-size: 1.6rem;
   font-family: "ProximaNova-Bold";
+}
+
+.single-song-artist {
+  font-size: 1.4rem;
+  font-family: "ProximaNova-Regular";
 }

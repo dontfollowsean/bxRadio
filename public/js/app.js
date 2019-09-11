@@ -8,7 +8,7 @@ const nowplayingImg = document.querySelector(".now-playing-img"),
   recentlyPlayedEndpoint = "http://35.211.223.26/recentlyplayed";
 
 const renderNowPlaying = song => {
-  const image = song.images.filter(i => i.width === 640);
+  const image = song.images.find(i => i.width === 640);
 
   nowplayingImg.src = image[0].url;
   nowplayingTitle.innerText = `${song.title}`;
@@ -24,13 +24,13 @@ const renderRecentlyPlayed = songs => {
   let songInfoHtml = "";
 
   songs.forEach(song => {
-    const image = song.images.filter(i => i.width === 64);
+    const image = song.images.find(i => i.width === 64);
 
     songInfoHtml += `
         <div class="single-song-container" 
           onclick="window.open('${song.url}', '_blank')">
           <img
-            src=${image[0].url}
+            src=${image.url}
             alt=${song.title}
             class="single-song-image"
           />
@@ -50,7 +50,7 @@ const renderRecentlyPlayed = songs => {
     Proper error handling
 */
 const handleError = err => {
-  console.log(err.response);
+  console.log(err);
 };
 
 const displaySongs = e => {

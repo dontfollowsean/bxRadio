@@ -50,6 +50,7 @@
   overflow: hidden;
   border-radius: 4px;
   animation: fade-in 1s ease forwards;
+  cursor: pointer;
 }
 
 .now-playing-img img {

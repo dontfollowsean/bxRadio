@@ -19,10 +19,12 @@ const renderNowPlaying = song => {
         <div class="now-playing-artist">${song.artist}</div>
       </div>
     </div>
-    <div class="now-playing-img">
+    <div class="now-playing-img" onclick="window.open('${song.url}', '_blank')">
       <img src=${image.url} alt=${song.title} />
     </div>
   `;
+
+  setTimeout(fetchNowPlaying, song.duration - song.progress);
 };
 
 const renderRecentlyPlayed = songs => {
@@ -67,7 +69,7 @@ const displayNotPlaying = () => {
   `;
 };
 
-const displaySongs = () => {
+const fetchNowPlaying = () => {
   fetch(nowPlayingEndpoint)
     .then(response => {
       if (response.status === 204){
@@ -76,13 +78,23 @@ const displaySongs = () => {
       }
      return response.json()
     })
-    .then(renderNowPlaying)
+    .then((song) => {
+      setTimeout(fetchRecentlyPlayed, (song.duration - song.progress) + 4500);
+      renderNowPlaying(song);
+    })
     .catch(err => console.log(err));
+}
 
+const fetchRecentlyPlayed = () => {
   fetch(recentlyPlayedEndpoint)
     .then(response => response.json())
     .then(renderRecentlyPlayed)
     .catch(err => console.log(err));
+}
+
+const displaySongs = () => {
+  fetchNowPlaying()
+  fetchRecentlyPlayed()
 };
 
 const styles = {

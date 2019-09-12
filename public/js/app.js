@@ -5,9 +5,10 @@ const nowplaying = document.querySelector(".now-playing"),
   recentlyPlayedEndpoint = "http://35.211.223.26/recentlyplayed";
 
 const renderNowPlaying = song => {
-  const image = song.images.find(i => i.width === 640);
+  let image = song.images.find(i => i.width === 640);
 
   if (image === null) {
+    image = {};
     image.url = "./public/images/generic-image.png";
   }
 
@@ -31,7 +32,12 @@ const renderRecentlyPlayed = songs => {
   let songInfoHtml = "";
 
   songs.forEach(song => {
-    const image = song.images.find(i => i.width === 64);
+    let image = song.images.find(i => i.width === 64);
+
+    if (image === null) {
+      image = {};
+      image.url = "./public/images/generic-image.png";
+    }
 
     songInfoHtml += `
         <div class="single-song-container" 
@@ -73,27 +79,27 @@ const fetchNowPlaying = () => {
   fetch(nowPlayingEndpoint)
     .then(response => {
       if (response.status === 204){
-        displayNotPlaying()
+        displayNotPlaying();
         return
       }
      return response.json()
     })
     .then((song) => {
-      setTimeout(fetchRecentlyPlayed, (song.duration - song.progress) + 4500);
+      setTimeout(fetchRecentlyPlayed, (song.duration - song.progress) + 5000);
       renderNowPlaying(song);
     })
     .catch(err => console.log(err));
-}
+};
 
 const fetchRecentlyPlayed = () => {
   fetch(recentlyPlayedEndpoint)
     .then(response => response.json())
     .then(renderRecentlyPlayed)
     .catch(err => console.log(err));
-}
+};
 
 const displaySongs = () => {
-  fetchNowPlaying()
+  fetchNowPlaying();
   fetchRecentlyPlayed()
 };
 

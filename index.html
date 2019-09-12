@@ -9,26 +9,68 @@
       rel="stylesheet"
       type="text/css"
       media="screen"
-      href="./public/css/styles.css"
+      href="./public/css/main.css"
     />
-    <script src="./public/js/app.js"></script>
+    <link
+      rel="icon"
+      href="./public/images/bxRadio_mark.ico"
+      type="image/x-icon"
+    />
+    <script src="./public/js/app.js" defer></script>
   </head>
+
   <body>
     <div class="container">
-      <div class="row">
-        <div class="item">
-          <label>Now Playing</label>
-          <div class="info" id="nowplayingInfo">
-            <div id="nowplayingImg"></div>
-            <div id="nowplayingTitle"></div>
-          </div>
-        </div>
+      <label class="switch" for="toggle">
+        <input type="checkbox" id="toggle" />
+        <span class="slider round"></span>
+      </label>
+      <div class="logo-container">
+        <svg
+          viewBox="0 0 1531 389"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+        >
+          <title>bxRadio_logo</title>
+          <desc>Created with Sketch.</desc>
+          <g
+            id="bxRadio_logo"
+            stroke="none"
+            stroke-width="1"
+            fill="none"
+            fill-rule="evenodd"
+          >
+            <text
+              id="bxRadio"
+              font-family="ProximaNova-Semibold, ProximaNova-Regular"
+              font-size="291"
+              font-weight="500"
+              letter-spacing="5.49122456"
+              fill="#FFFFFF"
+            >
+              <tspan x="437.663214" y="300">bxRadio</tspan>
+            </text>
+            <g
+              id="noun_Headphones_1148053-Copy"
+              transform="translate(12.000000, 12.000000)"
+              fill="#FFFFFF"
+              fill-rule="nonzero"
+            >
+              <path
+                d="M381,291.07947 L381,298.311258 C381,310.364238 371.460094,320.006623 359.535211,320.006623 C351.784038,320.006623 344.629108,315.18543 341.051643,309.15894 L341.051643,342.304636 C341.051643,354.357616 331.511737,364 319.586854,364 L299.314554,364 C287.389671,364 277.849765,354.357616 277.849765,342.304636 L277.849765,247.688742 C277.849765,235.635762 287.389671,225.993377 299.314554,225.993377 L319.586854,225.993377 C331.511737,225.993377 341.051643,235.635762 341.051643,247.688742 L341.051643,280.834437 C343.43662,276.615894 346.41784,273.602649 350.591549,271.794702 L350.591549,180.192053 C350.591549,91 278.446009,18.0794702 190.201878,18.0794702 C102.553991,18.0794702 30.4084507,91 30.4084507,180.192053 L30.4084507,271.794702 C32.7934272,273 34.5821596,274.205298 36.370892,276.013245 C38.1596244,277.821192 39.3521127,279.02649 39.9483568,280.834437 L39.9483568,247.688742 C39.9483568,235.635762 49.4882629,225.993377 61.4131455,225.993377 L81.685446,225.993377 C93.6103286,225.993377 103.150235,235.635762 103.150235,247.688742 L103.150235,341.701987 C103.150235,353.754967 93.6103286,363.397351 81.685446,363.397351 L61.4131455,363.397351 C49.4882629,363.397351 39.9483568,353.754967 39.9483568,341.701987 L39.9483568,308.556291 C36.370892,315.18543 29.2159624,320.006623 21.4647887,320.006623 C9.5399061,320.006623 0,310.364238 0,298.311258 L0,291.07947 C0,282.642384 4.76995305,274.807947 12.5211268,271.794702 L12.5211268,180.192053 C12.5211268,80.7549669 92.4178404,0 190.798122,0 C289.178404,0 369.075117,80.7549669 369.075117,180.192053 L369.075117,271.794702 C371.460094,273 373.248826,274.205298 375.037559,276.013245 C379.211268,279.629139 381,285.05298 381,291.07947 Z"
+                id="Path"
+              ></path>
+            </g>
+          </g>
+        </svg>
       </div>
-      <div class="row">
-        <div class="item">
-          <label>Recently Played</label>
-          <div class="info" id="lastplayed"></div>
-        </div>
+
+      <div class="now-playing"></div>
+
+      <div class="recently-played">
+        <label>Recently Played</label>
+        <div class="recently-played-container"></div>
       </div>
     </div>
   </body>

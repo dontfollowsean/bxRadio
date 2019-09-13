@@ -1,8 +1,8 @@
 const nowplaying = document.querySelector(".now-playing"),
   recentlyPlayedDiv = document.querySelector(".recently-played-container"),
   toggle = document.querySelector("#toggle"),
-  nowPlayingEndpoint = "http://35.211.223.26/nowplaying",
-  recentlyPlayedEndpoint = "http://35.211.223.26/recentlyplayed";
+  nowPlayingEndpoint = "https://bxradio.seanw.io/nowplaying",
+  recentlyPlayedEndpoint = "https://bxradio.seanw.io/recentlyplayed";
 
 const renderNowPlaying = song => {
   let image = song.images.find(i => i.width === 640);

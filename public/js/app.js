@@ -11,7 +11,7 @@ function getArtistText(artist) {
             text += ", ";
         }
         if (i > 0 && i === artist.length - 1) {
-            text += "and ";
+            text += " and ";
         }
         text += `<span onclick="window.open('${artist[i].url}', '_blank')">` + artist[i].name + `</span>`
         ;

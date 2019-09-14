@@ -115,6 +115,7 @@ const fetchRecentlyPlayed = () => {
 };
 
 const displaySongs = () => {
+    setTheme();
     fetchNowPlaying();
     fetchRecentlyPlayed()
 };
@@ -138,17 +139,35 @@ const styles = {
     }
 };
 
+const setTheme = () => {
+    if (typeof (Storage) !== "undefined" && localStorage.theme !== undefined) {
+        const theme = JSON.parse(localStorage.theme);
+        Object.keys(theme.theme).map(key => {
+            document.documentElement.style.setProperty(key, theme.theme[key]);
+        });
+        toggle.checked = theme.toggled;
+    }
+};
+
 const toggleTheme = e => {
     if (e.target.checked) {
         Object.keys(styles.blue).map(key => {
             document.documentElement.style.setProperty(key, styles.blue[key]);
         });
+        storeTheme(styles.blue, e.target.checked);
     } else {
         Object.keys(styles.dark).map(key => {
             document.documentElement.style.setProperty(key, styles.dark[key]);
         });
+        storeTheme(styles.dark, e.target.checked);
     }
 };
+
+const storeTheme = (theme, toggled) => {
+    if (typeof (Storage) !== "undefined") {
+        localStorage.theme = JSON.stringify({theme, toggled});
+    }
+}
 
 displaySongs();
 toggle.addEventListener("change", toggleTheme);

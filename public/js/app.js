@@ -101,7 +101,7 @@ const fetchNowPlaying = () => {
             return response.json()
         })
         .then((song) => {
-            setTimeout(fetchRecentlyPlayed, (song.duration - song.progress) + 5000);
+            setTimeout(fetchRecentlyPlayed, (song.duration - song.progress) + 6500);
             renderNowPlaying(song);
         })
         .catch(err => console.log(err));
@@ -167,7 +167,7 @@ const storeTheme = (theme, toggled) => {
     if (typeof (Storage) !== "undefined") {
         localStorage.theme = JSON.stringify({theme, toggled});
     }
-}
+};
 
 displaySongs();
 toggle.addEventListener("change", toggleTheme);

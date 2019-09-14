@@ -7,7 +7,7 @@ const nowplaying = document.querySelector(".now-playing"),
 function getArtistText(artist) {
     let text = "";
     for (let i = 0; i < artist.length; i++) {
-        if (i > 0 && artist.length) {
+        if (i > 0 && artist.length > 2) {
             text += ", ";
         }
         if (i > 0 && i === artist.length - 1) {

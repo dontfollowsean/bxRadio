@@ -141,7 +141,7 @@ const styles = {
 
 const setTheme = () => {
     if (typeof (Storage) !== "undefined" && localStorage.theme !== undefined) {
-        const theme = JSON.parse(localStorage.theme.theme);
+        const theme = JSON.parse(localStorage.theme);
         Object.keys(theme.theme).map(key => {
             document.documentElement.style.setProperty(key, theme.theme[key]);
         });

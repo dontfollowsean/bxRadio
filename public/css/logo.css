@@ -7,3 +7,9 @@
   height: 6rem;
   width: 12rem;
 }
+
+@media (max-width: 800px) {
+  .logo-container {
+    display: none;
+  }
+}

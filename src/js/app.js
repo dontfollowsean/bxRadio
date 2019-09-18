@@ -25,7 +25,7 @@ const renderNowPlaying = song => {
 
     if (image === null) {
         image = {};
-        image.url = "./images/generic-image.png";
+        image.url = "./images/generic-album.png";
     }
 
     nowplaying.innerHTML = `
@@ -52,7 +52,7 @@ const renderRecentlyPlayed = songs => {
 
         if (image === null) {
             image = {};
-            image.url = "./images/generic-image.png";
+            image.url = "./images/generic-album.png";
         }
 
         songInfoHtml += `

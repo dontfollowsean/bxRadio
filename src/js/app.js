@@ -25,7 +25,7 @@ const renderNowPlaying = song => {
 
     if (image === null) {
         image = {};
-        image.url = "./public/images/generic-image.png";
+        image.url = "./images/generic-album.png";
     }
 
     nowplaying.innerHTML = `
@@ -52,7 +52,7 @@ const renderRecentlyPlayed = songs => {
 
         if (image === null) {
             image = {};
-            image.url = "./public/images/generic-image.png";
+            image.url = "./images/generic-album.png";
         }
 
         songInfoHtml += `
@@ -86,7 +86,7 @@ const displayNotPlaying = () => {
       </div>
     </div>
     <div class="now-playing-img">
-      <img src="./public/images/generic-image.png" alt="Generic Cover Image" />
+      <img src="./images/generic-image.png" alt="Generic Cover Image" />
     </div>
   `;
 };

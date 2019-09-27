@@ -48,8 +48,9 @@ body {
     flex-direction: column;
     justify-content: space-evenly;
     width: 100%;
-    margin: auto;
     height: 100%;
     overflow: scroll;
+    position: relative;
+    padding-top: 20vh;
   }
 }

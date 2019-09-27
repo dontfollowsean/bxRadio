@@ -3,13 +3,14 @@ const cleanCss = require('gulp-clean-css');
 const concat = require('gulp-concat');
 const terser = require('gulp-terser');
 const replace = require('gulp-replace');
+const livereload = require('gulp-livereload');
 
 const minifiedJs = 'index.min.js';
 const minifiedCss = 'styles.min.css';
 
 function javascript() {
     return src('src/js/*.js')
-        .pipe(replace(`./images/generic-album.png`, `static/generic-album.png`))
+        .pipe(replace(`./images/generic-album.png`, `./static/generic-album.png`))
         .pipe(concat(minifiedJs))
         .pipe(terser())
         .pipe(dest('dist'));

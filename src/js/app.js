@@ -86,7 +86,7 @@ const displayNotPlaying = () => {
       </div>
     </div>
     <div class="now-playing-img">
-      <img src="./images/generic-image.png" alt="Generic Cover Image" />
+      <img src="./images/generic-album.png" alt="Generic Cover Image" />
     </div>
   `;
 };

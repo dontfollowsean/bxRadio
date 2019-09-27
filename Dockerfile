@@ -1,5 +1,8 @@
 FROM nginx
-COPY . /usr/share/nginx/html
 
-# Expose ports.
+RUN npm install && npm run build
+COPY ./dist /usr/share/nginx/html
+
+
+
 EXPOSE 80

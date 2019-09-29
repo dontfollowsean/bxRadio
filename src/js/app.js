@@ -1,3 +1,4 @@
+import './device.js';
 import { setTheme } from './themes.js';
 import { nowPlayingHtml, recentlyPlayedHtml, displayNotPlayingHtml } from './utils.js';
 

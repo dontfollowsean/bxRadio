@@ -69,7 +69,7 @@ input:checked + .slider:before {
   }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 600px) {
   .switch {
     display: block;
     position: absolute;

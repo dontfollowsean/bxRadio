@@ -119,7 +119,7 @@
   }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 600px) {
   .recently-played-container {
     height: 100%;
     grid-template-columns: none;

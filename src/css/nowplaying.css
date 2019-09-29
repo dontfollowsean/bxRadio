@@ -83,7 +83,7 @@
   }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 600px) {
   .now-playing {
     margin-top: 10rem;
   }

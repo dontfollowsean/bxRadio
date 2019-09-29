@@ -14,7 +14,7 @@
   }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 600px) {
   .logo-container {
     display: block;
     position: absolute;

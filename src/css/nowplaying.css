@@ -60,32 +60,40 @@
 
 @media (max-width: 800px) {
   .now-playing {
-    display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    animation: fade-in 1s ease forwards;
-    margin-top: 10vh;
+    margin-top: 20rem;
   }
+
   .now-playing-container {
-    display: flex;
-    flex-direction: column;
     flex-wrap: wrap;
     text-align: center;
     padding: 0;
     height: auto;
     width: auto;
   }
+
   .now-playing-img img {
     height: 300px;
     width: 300px;
   }
+
   .now-playing-img {
     height: auto;
-    width:auto;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.61);
-    border-radius: 4px;
-    animation: fade-in 1s ease forwards;
-    cursor: pointer;
+    width: auto;
+  }
+}
+
+@media (max-width: 400px) {
+  .now-playing {
+    margin-top: 10rem;
+  }
+
+  .now-playing-img img {
+    height: 200px;
+    width: 200px;
+  }
+
+  .now-playing-title {
+    font-size: 2rem;
   }
 }

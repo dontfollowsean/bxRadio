@@ -64,7 +64,16 @@ input:checked + .slider:before {
 }
 
 @media (max-width: 800px) {
-  .switch{
+  .switch {
     display: none;
+  }
+}
+
+@media (max-width: 400px) {
+  .switch {
+    display: block;
+    position: absolute;
+    top: 2rem;
+    right: 3rem;
   }
 }

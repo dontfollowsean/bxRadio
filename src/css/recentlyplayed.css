@@ -121,9 +121,28 @@
 
 @media (max-width: 400px) {
   .recently-played-container {
-    height: 35rem;
+    height: 100%;
+    grid-template-columns: none;
+    grid-gap: none;
+    display: flex;
+    flex-direction: column;
     flex-wrap: nowrap;
     overflow-x: hidden;
     overflow-y: scroll;
+  }
+
+  .single-song-container {
+    height: auto;
+    background-color: var(--theme-single-background-color);
+    box-shadow: var(--theme-single-shadow);
+    opacity: 0;
+    animation: fade-in 1s ease forwards;
+    cursor: pointer;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 3.5rem 2rem;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    margin-bottom: 1.5rem;
   }
 }

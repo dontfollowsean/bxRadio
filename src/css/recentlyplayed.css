@@ -1,5 +1,5 @@
 .recently-played {
-  height: 20rem;
+  height: 25rem;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -7,15 +7,15 @@
 }
 
 .recently-played label {
+  animation: fade-in 1s ease forwards;
+  animation-delay: 0.3s;
   color: #ccc;
   font-size: 1.4rem;
   letter-spacing: 3px;
   font-family: "ProximaNova-Bold";
   text-transform: uppercase;
   margin-left: 2rem;
-  animation: fade-in 1s ease forwards;
   opacity: 0;
-  animation-delay: 0.3s;
 }
 
 .recently-played-container {
@@ -38,6 +38,7 @@
   align-items: center;
   padding-left: 2rem;
   transition: transform 0.2s ease, background-color 0.2s ease;
+  margin-bottom: 1.5rem;
 }
 
 .single-song-container:nth-of-type(1) {
@@ -47,7 +48,16 @@
   animation-delay: 600ms;
 }
 .single-song-container:nth-of-type(3) {
-  animation-delay: 800ms;
+  animation-delay: 900ms;
+}
+.single-song-container:nth-of-type(4) {
+  animation-delay: 1200ms;
+}
+.single-song-container:nth-of-type(5) {
+  animation-delay: 1500ms;
+}
+.single-song-container:nth-of-type(6) {
+  animation-delay: 1800ms;
 }
 
 @keyframes fade-in {
@@ -91,27 +101,55 @@
 }
 
 @media (max-width: 800px) {
+  .recently-played {
+    height: 100%;
+    justify-content: space-between;
+  }
+
   .recently-played-container {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
   }
-  .recently-played {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  .single-song-content {
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding-left: 2rem;
-  }
+
   .recently-played label {
     text-align: center;
     margin-top: 3vh;
     margin-bottom: 1vh;
+  }
+}
+
+@media (max-width: 600px) {
+  .recently-played-container {
+    height: 100%;
+    grid-template-columns: none;
+    grid-gap: none;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    overflow-x: hidden;
+    overflow-y: scroll;
+  }
+
+  .single-song-container {
+    height: auto;
+    background-color: var(--theme-single-background-color);
+    box-shadow: var(--theme-single-shadow);
+    opacity: 0;
+    animation: fade-in 1s ease forwards;
+    cursor: pointer;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    margin-bottom: 1.5rem;
+  }
+
+  .iphone .single-song-container {
+    padding: 3.5rem 2rem;
+  }
+
+  .android .single-song-container {
+    padding: 1rem;
   }
 }

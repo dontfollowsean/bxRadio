@@ -13,3 +13,17 @@
     display: none;
   }
 }
+
+@media (max-width: 600px) {
+  .logo-container {
+    display: block;
+    position: absolute;
+    top: 2rem;
+    padding-left: 3rem;
+  }
+
+  .logo-container svg {
+    height: 4rem;
+    width: 10rem;
+  }
+}

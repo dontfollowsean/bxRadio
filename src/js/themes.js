@@ -19,7 +19,7 @@ const themes = {
     }
 };
 
-export const setTheme = () => {
+const setTheme = () => {
     if (typeof (Storage) !== "undefined" && localStorage.theme !== undefined) {
         const theme = JSON.parse(localStorage.theme);
         Object.keys(theme.theme).map(key => {

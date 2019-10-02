@@ -9,7 +9,7 @@ const minifiedJs = 'index.min.js';
 const minifiedCss = 'styles.min.css';
 
 function javascript() {
-    return src('src/js/*.js')
+    return src(['src/js/device.js', 'src/js/themes.js', 'src/js/utils.js', 'src/js/app.js'])
         .pipe(replace(`./images/generic-album.png`, `./static/generic-album.png`))
         .pipe(concat(minifiedJs))
         .pipe(terser())

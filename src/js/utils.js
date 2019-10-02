@@ -13,7 +13,7 @@ const getArtistText = (artist) => {
     return text
 }
 
-export const nowPlayingHtml = (song) => {
+const nowPlayingHtml = (song, image) => {
     return `
         <div class="now-playing-container">
         <label>Now Playing</label>
@@ -28,7 +28,7 @@ export const nowPlayingHtml = (song) => {
     `;
 }
 
-export const recentlyPlayedHtml = (song, image) => {
+const recentlyPlayedHtml = (song, image) => {
     return `
         <div class="single-song-container" 
             onclick="window.open('${song.url}', '_blank')">
@@ -45,7 +45,7 @@ export const recentlyPlayedHtml = (song, image) => {
     `;
 }
 
-export const displayNotPlayingHtml = () => {
+const displayNotPlayingHtml = () => {
     return `
         <div class="now-playing-container">
         <div class="now-playing-info">

@@ -1,8 +1,4 @@
-import './device.js';
-import { setTheme } from './themes.js';
-import { nowPlayingHtml, recentlyPlayedHtml, displayNotPlayingHtml } from './utils.js';
-
-const nowplaying = document.querySelector(".now-playing"),
+const nowPlaying = document.querySelector(".now-playing"),
     recentlyPlayedDiv = document.querySelector(".recently-played-container"),
     nowPlayingEndpoint = "https://bxradio.seanw.io/nowplaying",
     recentlyPlayedEndpoint = "https://bxradio.seanw.io/recentlyplayed";

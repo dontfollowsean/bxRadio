@@ -11,9 +11,10 @@ const renderNowPlaying = song => {
         image.url = "./images/generic-album.png";
     }
 
-    nowplaying.innerHTML = nowPlayingHtml(song);
-
-    setTimeout(fetchNowPlaying, song.duration - song.progress);
+    if (typeof song !== 'undefined') {
+        nowPlaying.innerHTML = nowPlayingHtml(song, image);
+        setTimeout(fetchNowPlaying, song.duration - song.progress);
+    }
 };
 
 const renderRecentlyPlayed = songs => {
@@ -37,22 +38,21 @@ const renderRecentlyPlayed = songs => {
   TODO -
     Proper error handling
 */
-const displayNotPlaying = () => {
-    nowplaying.innerHTML = displayNotPlayingHtml();
-};
 
 const fetchNowPlaying = () => {
     fetch(nowPlayingEndpoint)
         .then(response => {
             if (response.status === 204) {
-                displayNotPlaying();
-                return
+                nowPlaying.innerHTML = displayNotPlayingHtml();
+                return;
             }
-            return response.json()
+            return response.json();
         })
         .then((song) => {
-            setTimeout(fetchRecentlyPlayed, (song.duration - song.progress) + 6500);
-            renderNowPlaying(song);
+            if (typeof song !== 'undefined') {
+                setTimeout(fetchRecentlyPlayed, (song.duration - song.progress) + 6500);
+                renderNowPlaying(song);
+            }
         })
         .catch(err => console.log(err));
 };

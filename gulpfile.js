@@ -9,7 +9,7 @@ const minifiedJs = 'index.min.js';
 const minifiedCss = 'styles.min.css';
 
 function javascript() {
-    return src(['src/js/device.js', 'src/js/themes.js', 'src/js/utils.js', 'src/js/app.js'])
+    return src(['src/client/js/device.js', 'src/client/js/themes.js', 'src/client/js/utils.js', 'src/client/js/spotify.js', 'src/client/js/app.js'])
         .pipe(replace(`./images/generic-album.png`, `./static/generic-album.png`))
         .pipe(concat(minifiedJs))
         .pipe(terser())
@@ -17,7 +17,7 @@ function javascript() {
 }
 
 function css() {
-    return src('src/css/*.css')
+    return src('src/client/css/*.css')
         .pipe(concat(minifiedCss))
         .pipe(replace(`../fonts/`, `static/`))
         .pipe(cleanCss({debug: true}, (details) => {
@@ -28,15 +28,15 @@ function css() {
 }
 
 function html() {
-    return src('src/index.html')
-        .pipe(replace(`./js/app.js`,`${minifiedJs}`))
-        .pipe(replace(`./css/main.css`, `${minifiedCss}`))
-        .pipe(replace(`./images/bxRadio_mark.ico`, `static/bxRadio_mark.ico`))
+    return src('src/client/index.html')
+        .pipe(replace(`js/app.js`, `${minifiedJs}`))
+        .pipe(replace(`css/main.css`, `${minifiedCss}`))
+        .pipe(replace(`images/bxRadio_mark.ico`, `static/bxRadio_mark.ico`))
         .pipe(dest('dist'));
 }
 
 function copyStaticFiles() {
-    return src(['src/fonts/*.woff', 'src/images/*']).pipe(dest('dist/static'));
+    return src(['src/client/fonts/*.woff', 'src/client/images/*']).pipe(dest('dist/static'));
 }
 
 

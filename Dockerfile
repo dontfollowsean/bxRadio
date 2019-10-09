@@ -1,8 +1,10 @@
-FROM nginx
+FROM node:10
 
-RUN npm install && npm run build
-COPY ./dist /usr/share/nginx/html
+WORKDIR /usr/src/app
+COPY package*.json ./
 
-
-
+RUN npm install
+COPY . .
 EXPOSE 80
+
+CMD [ "npm", "start" ]

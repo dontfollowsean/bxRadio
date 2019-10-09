@@ -13,7 +13,7 @@ function javascript() {
         .pipe(replace(`./images/generic-album.png`, `./static/generic-album.png`))
         .pipe(concat(minifiedJs))
         .pipe(terser())
-        .pipe(dest('dist'));
+        .pipe(dest('src/server/public'));
 }
 
 function css() {
@@ -24,7 +24,7 @@ function css() {
             console.log(`Original CSS size: ${details.stats.originalSize}`);
             console.log(`Minified CSS Size: ${details.stats.minifiedSize}`);
         }))
-        .pipe(dest('dist'));
+        .pipe(dest('src/server/public'));
 }
 
 function html() {
@@ -32,11 +32,11 @@ function html() {
         .pipe(replace(`js/app.js`, `${minifiedJs}`))
         .pipe(replace(`css/main.css`, `${minifiedCss}`))
         .pipe(replace(`images/bxRadio_mark.ico`, `static/bxRadio_mark.ico`))
-        .pipe(dest('dist'));
+        .pipe(dest('src/server/public'));
 }
 
 function copyStaticFiles() {
-    return src(['src/client/fonts/*.woff', 'src/client/images/*']).pipe(dest('dist/static'));
+    return src(['src/client/fonts/*.woff', 'src/client/images/*']).pipe(dest('src/server/public/static'));
 }
 
 

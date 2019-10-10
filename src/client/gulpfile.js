@@ -35,7 +35,7 @@ function html() {
     return src('./index.html')
         .pipe(replace(`js/app.js`, `${minifiedJs}`))
         .pipe(replace(`css/main.css`, `${minifiedCss}`))
-        .pipe(replace(`images/bxRadio_mark.ico`, `static/bxRadio_mark.ico`))
+        .pipe(replace(`images/`, `static/`))
         .pipe(dest('./dist'))
         .pipe(browserSync.stream());
 }
@@ -47,7 +47,7 @@ function copyStaticFiles() {
 function watchFiles() {
     watch('./js/*.js', javascript);
     watch('./css/*.css', css);
-    watch('./html/*.html', html);
+    watch('*.html', html);
 }
 
 function sync() {

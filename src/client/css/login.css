@@ -1,0 +1,19 @@
+.login {
+    position: absolute;
+    top: 5rem;
+    right: 15rem;
+    display: flex;
+    width: 60px;
+    height: 45px;
+}
+
+.login img {
+    max-width: 75%;
+    max-height: 75%;
+}
+
+@media (max-width: 600px) {
+    .login {
+        display: none;
+    }
+}

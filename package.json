@@ -14,7 +14,10 @@
     "docker:start:server": "docker run -p 80:80 -d bxradio-server",
     "docker:start": "docker run -p 80:80 -d bxradio-client && docker run -p 8080:80 -d bxradio-server",
     "docker:build": "docker build -t bxradio-client -f ./src/client/Dockerfile . && docker build -t bxradio-server -f ./src/server/Dockerfile .",
-    "start:cloudfunctions": "concurrently \"functions-framework --source=./src/cloudFunctions/spotifyLogin --target=spotifyLogin --port=8080\" \"functions-framework --source=./src/cloudFunctions/spotifyCallback --target=spotifyCallback --port=8081\" \"functions-framework --source=./src/cloudFunctions/spotifyRefreshToken --target=spotifyRefresh --port=8082\""
+    "cloudfunction:start": "concurrently \"functions-framework --source=./src/cloudFunctions/spotifyLogin --target=spotifyLogin --port=8080\" \"functions-framework --source=./src/cloudFunctions/spotifyCallback --target=spotifyCallback --port=8081\" \"functions-framework --source=./src/cloudFunctions/spotifyRefreshToken --target=spotifyRefresh --port=8082\"",
+    "cloudfunction:deploy:callback": "gcloud functions deploy spotifyCallback --source=src/cloudFunctions/spotifyCallback --region=us-east1 --runtime=nodejs10 --env-vars-file=src/cloudFunctions/_envvars.yml --trigger-http",
+    "cloudfunction:deploy:refresh": "gcloud functions deploy spotifyRefresh --source=src/cloudFunctions/spotifyRefresh --region=us-east1 --runtime=nodejs10 --env-vars-file=src/cloudFunctions/_envvars.yml --trigger-http",
+    "cloudfunction:deploy:login": "gcloud functions deploy spotifyLogin --source=src/cloudFunctions/spotifyLogin --region=us-east1 --runtime=nodejs10 --env-vars-file=src/cloudFunctions/_envvars.yml --trigger-http"
   },
   "repository": {
     "type": "git",

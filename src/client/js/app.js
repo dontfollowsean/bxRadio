@@ -2,6 +2,7 @@ const nowPlaying = document.querySelector(".now-playing"),
     recentlyPlayedDiv = document.querySelector(".recently-played-container"),
     nowPlayingEndpoint = "https://bxradio.seanw.io/nowplaying",
     recentlyPlayedEndpoint = "https://bxradio.seanw.io/recentlyplayed";
+let currentSong = {};
 
 const renderNowPlaying = song => {
     let image = song.images.find(i => i.width === 640);
@@ -51,7 +52,11 @@ const fetchNowPlaying = () => {
         .then((song) => {
             if (typeof song !== 'undefined') {
                 setTimeout(fetchRecentlyPlayed, (song.duration - song.progress) + 6500);
+                currentSong = song;
                 renderNowPlaying(song);
+                if (getCookieValue('access_token') && sessionStorage.device_id) {
+                    playCurrentSong(getCookieValue('access_token'), sessionStorage.device_id);
+                }
             }
         })
         .catch(err => console.log(err));

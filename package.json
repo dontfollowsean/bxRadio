@@ -2,10 +2,18 @@
   "name": "bxradio",
   "version": "1.0.0",
   "description": "",
-  "main": "src/public/js/app.js",
+  "main": "src/client/public/js/app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "gulp build"
+    "start:server": "node ./src/server/bin/www",
+    "build:client": "gulp build -f ./src/client/gulpfile.js",
+    "start": "gulp -f ./src/client/gulpfile.js",
+    "docker:build:client": "docker build -t bxradio-client -f ./src/client/Dockerfile .",
+    "docker:start:client": "docker run -p 8080:80 -d bxradio-client",
+    "docker:build:server": "docker build -t bxradio-server -f ./src/server/Dockerfile .",
+    "docker:start:server": "docker run -p 80:80 -d bxradio-server",
+    "docker:start": "docker run -p 80:80 -d bxradio-client && docker run -p 8080:80 -d bxradio-server",
+    "docker:build": "docker build -t bxradio-client -f ./src/client/Dockerfile . && docker build -t bxradio-server -f ./src/server/Dockerfile ."
   },
   "repository": {
     "type": "git",
@@ -17,11 +25,22 @@
     "url": "https://github.com/dontfollowsean/bxRadio/issues"
   },
   "homepage": "https://www.seanw.io/bxradio",
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "jade": "~1.11.0",
+    "morgan": "~1.9.1",
+    "request": "^2.88.0",
+    "cors": "^2.8.5"
+  },
   "devDependencies": {
+    "browser-sync": "^2.26.7",
     "gulp": "^4.0.2",
     "gulp-clean-css": "^4.2.0",
     "gulp-concat": "^2.6.1",
-    "gulp-livereload": "^4.0.2",
+    "gulp-connect": "^5.7.0",
     "gulp-replace": "^1.0.0",
     "gulp-terser": "^1.2.0"
   }

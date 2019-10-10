@@ -5,10 +5,15 @@
   "main": "src/client/public/js/app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build:client": "gulp build",
-    "start": "gulp build && node ./src/server/bin/www",
-    "build:server": "docker build -t bxradio .",
-    "start:server": "docker run -p 80:80 -d bxradio"
+    "start:server": "node ./src/server/bin/www",
+    "build:client": "gulp build -f ./src/client/gulpfile.js",
+    "start": "gulp -f ./src/client/gulpfile.js",
+    "docker:build:client": "docker build -t bxradio-client -f ./src/client/Dockerfile .",
+    "docker:start:client": "docker run -p 8080:80 -d bxradio-client",
+    "docker:build:server": "docker build -t bxradio-server -f ./src/server/Dockerfile .",
+    "docker:start:server": "docker run -p 80:80 -d bxradio-server",
+    "docker:start": "docker run -p 80:80 -d bxradio-client && docker run -p 8080:80 -d bxradio-server",
+    "docker:build": "docker build -t bxradio-client -f ./src/client/Dockerfile . && docker build -t bxradio-server -f ./src/server/Dockerfile ."
   },
   "repository": {
     "type": "git",
@@ -31,10 +36,11 @@
     "cors": "^2.8.5"
   },
   "devDependencies": {
+    "browser-sync": "^2.26.7",
     "gulp": "^4.0.2",
     "gulp-clean-css": "^4.2.0",
     "gulp-concat": "^2.6.1",
-    "gulp-livereload": "^4.0.2",
+    "gulp-connect": "^5.7.0",
     "gulp-replace": "^1.0.0",
     "gulp-terser": "^1.2.0"
   }

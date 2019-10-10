@@ -6,9 +6,10 @@ const request = require('request'); // "Request" library
 const router = express.Router();
 
 const stateKey = 'spotify_auth_state';
-const client_id = '3dec4b7e6bfc4c4ab06b9c58eccf759b'; //TODO: temporary
-const redirect_uri = 'http://localhost/login/callback';
-const client_secret = 'c14eba8ba7754dd0a440d4d8cc3b4e8c';
+const client_id = process.env.SPOTIFY_CLIENT_ID || '3dec4b7e6bfc4c4ab06b9c58eccf759b'; //TODO: temporary
+const redirect_uri = process.env.SPOTIFY_REDIRECT_URI || 'http://localhost/login/callback';
+const client_secret =  process.env.SPOTIFY_CLIENT_SECRET || 'c14eba8ba7754dd0a440d4d8cc3b4e8c';
+const BXRADIO_URL = process.env.BXRADIO_URL || 'http://localhost:3000';
 
 /**
  * Generates a random string containing numbers and letters
@@ -87,7 +88,7 @@ router.get('/callback', function (req, res) {
                 res.cookie('access_token', access_token);
                 res.cookie('refresh_token', refresh_token);
                 // we can also pass the token to the browser to make requests from there
-                res.redirect('/');
+                res.redirect(BXRADIO_URL);
             } else {
                 res.redirect('/');
                 console.error('invalid_token');

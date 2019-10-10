@@ -1,0 +1,14 @@
+{
+  "name": "spotifyrefreshtoken",
+  "version": "1.0.0",
+  "description": "Cloud Function for refreshing Spotify Auth Token",
+  "main": "refresh.js",
+  "scripts": {
+    "start": "functions-framework --target=spotifyRefresh --port=8082"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "request": "^2.88.0"
+  }
+}

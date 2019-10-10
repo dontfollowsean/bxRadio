@@ -1,0 +1,14 @@
+{
+  "name": "spotifylogin",
+  "version": "1.0.0",
+  "description": "Cloud Function to get Spotify Access Tokens",
+  "main": "login.js",
+  "scripts": {
+    "start": "functions-framework --target=spotifyLogin --port=8080"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "querystring": "^0.2.0"
+  }
+}

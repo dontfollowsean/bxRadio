@@ -1,0 +1,14 @@
+{
+  "name": "spotifycallback",
+  "version": "1.0.0",
+  "description": "Cloud Function for responding to Spotify Auth Callback",
+  "main": "callback.js",
+  "scripts": {
+    "start": "functions-framework --target=spotifyCallback --port=8081"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "request": "^2.88.0"
+  }
+}

@@ -61,7 +61,7 @@
 @media (max-width: 800px) {
   .now-playing {
     flex-direction: column;
-    margin-top: 20rem;
+    margin-top: 7rem;
   }
 
   .now-playing-container {
@@ -85,7 +85,7 @@
 
 @media (max-width: 600px) {
   .now-playing {
-    margin-top: 10rem;
+    margin-top: 5rem;
   }
 
   .now-playing-img img {

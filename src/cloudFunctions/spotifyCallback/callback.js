@@ -1,4 +1,5 @@
 const request = require('request'); // "Request" library
+const querystring = require('querystring');
 
 const stateKey = 'spotify_auth_state';
 const client_id = process.env.SPOTIFY_CLIENT_ID || '';
@@ -38,7 +39,6 @@ exports.spotifyCallback = (req, res) => {
 
                 const access_token = body.access_token,
                     refresh_token = body.refresh_token;
-
                 const options = {
                     url: 'https://api.spotify.com/v1/me',
                     headers: {'Authorization': 'Bearer ' + access_token},
@@ -49,10 +49,12 @@ exports.spotifyCallback = (req, res) => {
                 request.get(options, function (error, response, body) {
                     console.log(body);
                 });
-                res.cookie('access_token', access_token);
-                res.cookie('refresh_token', refresh_token);
-                // we can also pass the token to the browser to make requests from there
-                res.redirect(BXRADIO_URL);
+
+                res.redirect(BXRADIO_URL + '?' +
+                    querystring.stringify({
+                        data: access_token,
+                        refresh: refresh_token
+                    }));
             } else {
                 res.redirect(BXRADIO_URL);
                 console.error('invalid_token');

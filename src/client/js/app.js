@@ -75,4 +75,17 @@ const displaySongs = () => {
     fetchRecentlyPlayed()
 };
 
+const readAccessToken = () => {
+    let accessToken = '';
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has('data')) {
+        accessToken = urlParams.get('data');
+        document.cookie = `access_token=${accessToken}`;
+        console.log(accessToken);
+        window.history.replaceState({}, document.title, "/");
+    }
+    // todo get refresh token
+};
+
+readAccessToken();
 displaySongs();

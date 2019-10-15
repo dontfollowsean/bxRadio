@@ -81,8 +81,7 @@ const readAccessToken = () => {
     if (urlParams.has('data')) {
         accessToken = urlParams.get('data');
         document.cookie = `access_token=${accessToken}`;
-        console.log(accessToken);
-        window.history.replaceState({}, document.title, "/");
+        window.history.replaceState({}, document.title, "/bxradio");
     }
     // todo get refresh token
 };

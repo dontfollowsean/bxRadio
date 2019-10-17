@@ -23,19 +23,19 @@ window.onSpotifyWebPlaybackSDKReady = () => {
 
     // Playback status updates
     player.addListener('player_state_changed', state => {
-        console.log(state);
+        // console.log(state);
     });
 
     // Ready
     player.addListener('ready', ({device_id}) => {
-        console.log('Ready with Device ID', device_id);
+        // console.log('Ready with Device ID', device_id);
         playCurrentSong(token, device_id);
         sessionStorage.device_id = device_id;
     });
 
     // Not Ready
     player.addListener('not_ready', ({device_id}) => {
-        console.log('Device ID has gone offline', device_id);
+        // console.log('Device ID has gone offline', device_id);
     });
 
     // Connect to the player!
@@ -56,6 +56,6 @@ const playCurrentSong = (token, device_id) => {
             'Authorization': `Bearer ${token}`
         },
     }).catch((err) => {
-        console.error('error playing current song');
+        console.error('error playing current song: ', err);
     });
 };

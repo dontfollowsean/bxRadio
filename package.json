@@ -7,6 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start:server": "node ./src/server/bin/www",
     "build:client": "gulp build -f ./src/client/gulpfile.js",
+    "deploy:client": "sh gh-deploy.sh",
     "start": "gulp -f ./src/client/gulpfile.js",
     "docker:build:client": "docker build -t bxradio-client -f ./src/client/Dockerfile .",
     "docker:start:client": "docker run -p 8080:80 -d bxradio-client",

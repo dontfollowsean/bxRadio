@@ -24,4 +24,4 @@ echo "Building site $FLAG"
 npm run build:client
 
 echo "Updating gh-pages branch"
-cd src/client/dist && git add --all && git commit -m "$MSG (deploy-client.sh)" && git push
+cd src/client/dist && git add --all && git commit -m "$MSG (gh-client.sh)" && git push

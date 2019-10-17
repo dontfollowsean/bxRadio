@@ -31,11 +31,13 @@ window.onSpotifyWebPlaybackSDKReady = () => {
         // console.log('Ready with Device ID', device_id);
         playCurrentSong(token, device_id);
         sessionStorage.device_id = device_id;
+        document.getElementById('loginButton').style.display = 'none';
     });
 
     // Not Ready
     player.addListener('not_ready', ({device_id}) => {
         // console.log('Device ID has gone offline', device_id);
+        document.getElementById('loginButton').style.display = 'flex';
     });
 
     // Connect to the player!
